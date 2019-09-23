@@ -1,4 +1,4 @@
-const express = require('express')
+const express = require('express')();
 const http = require('http').createServer(express);
 const io = require('socket.io')(http);
 const fs = require('fs');
@@ -7,7 +7,7 @@ const chalk = require('chalk');
 if(!fs.existsSync('./.logs/')) fs.mkdirSync('./.logs');
 global.logpath = './.logs/';
 
-app.get('/', require('./handlers/express/home'));
+express.get('/', require('./handlers/express/home'));
 
 io.on('connection', function(socket) {
     console.log(chalk.green('Client connected.'));
