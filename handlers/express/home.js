@@ -1,4 +1,4 @@
-function handle(res)
+async function handle(req, res)
 {
     res.end('OK'); 
 }
