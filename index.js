@@ -11,10 +11,10 @@ express.get('/', require('./handlers/express/home'));
 
 io.on('connection', function(socket) {
     console.log(chalk.green('Client connected.'));
-    socket.on('new', (info) => require('./handlers/sockets/new').exec(info, io, chalk, fs));
-    socket.on('scr', (info) => require('./handlers/sockets/scr').exec(info, io, chalk, fs));
-    socket.on('ping', (info) => require('./handlers/sockets/ping').exec(info, chalk, fs));
-    socket.on('disconnect', () => require('./handlers/sockets/leave').exec(chalk));
+    socket.on('new', (info) => require('./handlers/sockets/new')(info, io, chalk, fs));
+    socket.on('scr', (info) => require('./handlers/sockets/scr')(info, io, chalk, fs));
+    socket.on('ping', (info) => require('./handlers/sockets/ping')(info, chalk, fs));
+    socket.on('disconnect', () => require('./handlers/sockets/leave')(chalk));
 });
 
 
